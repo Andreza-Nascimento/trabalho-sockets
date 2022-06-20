@@ -5,7 +5,7 @@ def main ():
     cliente = socket.socket(socket.AF_INET,socket.SOCK_STREAM)      # Protocolos IPv4 e TCP, respectivamente
     
     try:
-        cliente.connect(('localhost',52620))                        # Tentativa de conexão com o servidor
+        cliente.connect(('localhost', 2560))                        # Tentativa de conexão com o servidor
     except:
         return print('\nFalha na conexão')
 
@@ -13,7 +13,7 @@ def main ():
     print('\nVocê está conectado')
 
     # Para que as duas funções operem paralelamente de modo simultâneo
-    processo_envia = threading.Thread(targe=envia, args=[cliente, usuario])
+    processo_envia = threading.Thread(target=envia, args=[cliente, usuario])
     processo_recebe = threading.Thread(target=recebe, args=[cliente])
 
     processo_envia.star()
@@ -37,6 +37,5 @@ def recebe (cliente):                                                # Função 
             print('Pressione ENTER')
             cliente.close()
             break
-
 
 main ()
