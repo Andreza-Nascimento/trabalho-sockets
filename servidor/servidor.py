@@ -5,11 +5,11 @@ clientes = []
 
 def main():
     
-    servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)      # Protocolos IPv4 e TCP, respectivamente
+    servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)                            # Protocolos IPv4 e TCP, respectivamente
 
     try:
         servidor.bind(('localhost', 2560))
-        servidor.listen()                                             # É possível definir a quantidade de conexões
+        servidor.listen()                                                                   # É possível definir a quantidade de conexões
     except:
         return print('\nFalha no servidor')
 
@@ -20,7 +20,7 @@ def main():
         processo_clientes = threading.Thread(target=recebe_compartilha, args=[cliente])
         processo_clientes.start()
 
-def recebe_compartilha(cliente):                                                  # Receber e compartilhar mensagens
+def recebe_compartilha(cliente):                                                            # Receber e compartilhar mensagens
     while True:
         try:
             mensagem = cliente.recv(2048)
@@ -29,7 +29,7 @@ def recebe_compartilha(cliente):                                                
             remover_cliente(cliente)
             break
 
-def compartilhamento(mensagem, cliente):                              # Broadcast
+def compartilhamento(mensagem, cliente):                                                    # Broadcast
     for cliente_numero in clientes:
         if cliente_numero != cliente:
             try:
@@ -37,7 +37,7 @@ def compartilhamento(mensagem, cliente):                              # Broadcas
             except:
                 remover_cliente(cliente_numero)
 
-def remover_cliente(cliente):                                          # Remover cliente da lista do servidor
+def remover_cliente(cliente):                                                               # Remover cliente da lista do servidor
     clientes.remove(cliente)
 
 main()

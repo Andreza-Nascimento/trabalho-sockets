@@ -3,10 +3,10 @@ import threading
 
 def main ():
 
-    cliente = socket.socket(socket.AF_INET,socket.SOCK_STREAM)      # Protocolos IPv4 e TCP, respectivamente
+    cliente = socket.socket(socket.AF_INET,socket.SOCK_STREAM)                      # Protocolos IPv4 e TCP, respectivamente
     
     try:
-        cliente.connect(('localhost', 2560))                        # Tentativa de conexão com o servidor
+        cliente.connect(('localhost', 2560))                                        # Tentativa de conexão com o servidor
     except:
         return print('\nFalha na conexão')
 
@@ -20,7 +20,7 @@ def main ():
     processo_envia.start()
     processo_recebe.start()
 
-def envia (cliente, usuario):                                        # Função destinada para o envio de mensagens
+def envia (cliente, usuario):                                                       # Função destinada para o envio de mensagens
     while True:
         try:
             mensagem = input('\n')
@@ -28,7 +28,7 @@ def envia (cliente, usuario):                                        # Função 
         except:
             return
 
-def recebe (cliente):                                                # Função destinada para o recebimento de mensagens
+def recebe (cliente):                                                               # Função destinada para o recebimento de mensagens
     while True:
         try:
             mensagem = cliente.recv(2048).decode('utf-8')
