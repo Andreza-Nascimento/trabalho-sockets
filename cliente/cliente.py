@@ -2,6 +2,7 @@ import socket
 import threading
 
 def main ():
+
     cliente = socket.socket(socket.AF_INET,socket.SOCK_STREAM)      # Protocolos IPv4 e TCP, respectivamente
     
     try:
@@ -16,7 +17,7 @@ def main ():
     processo_envia = threading.Thread(target=envia, args=[cliente, usuario])
     processo_recebe = threading.Thread(target=recebe, args=[cliente])
 
-    processo_envia.star()
+    processo_envia.start()
     processo_recebe.start()
 
 def envia (cliente, usuario):                                        # Função destinada para o envio de mensagens

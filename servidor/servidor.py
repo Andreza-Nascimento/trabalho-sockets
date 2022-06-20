@@ -18,6 +18,7 @@ def main():
         clientes.append(cliente)
 
         processo_clientes = threading.Thread(target=recebe_compartilha, args=[cliente])
+        processo_clientes.start()
 
 def recebe_compartilha(cliente):                                                  # Receber e compartilhar mensagens
     while True:
@@ -39,4 +40,4 @@ def compartilhamento(mensagem, cliente):                              # Broadcas
 def remover_cliente(cliente):                                          # Remover cliente da lista do servidor
     clientes.remove(cliente)
 
-main():
+main()
